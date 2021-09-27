@@ -1,28 +1,35 @@
-from ariadne import QueryType, make_executable_schema, gql
-
-type_defs = gql("""
-    type Query {
-        hello: String!
-        saywhat: String!
-    }
-""")
+import typing
+import strawberry
 
 
-# Create QueryType instance for Query type defined in our schema...
-query = QueryType()
-
-# ...and assign our resolver function to its "hello" field.
-
-
-@query.field("hello")
-def resolve_hello(_, info):
-    request = info.context["request"]
-    user_agent = request.headers.get("user-agent", "guest")
-    return "Hello, %s!" % user_agent
-
-@query.field("saywhat")
-def resolve_saywhat(_, __):
-    return "say what?"
+@strawberry.type
+class Book:
+    title: str
+    author: str
 
 
-schema = make_executable_schema(type_defs, query)
+@strawberry.type
+class Query:
+    books: typing.List[Book]
+
+
+def get_books():
+    return [
+        Book(
+            title='The Great Gatsby',
+            author='F. Scott Fitzgerald',
+        ),
+    ]
+
+
+def say_hello():
+    return "hello from graphql"
+
+
+@strawberry.type
+class Query:
+    books: typing.List[Book] = strawberry.field(resolver=get_books)
+    hello: str = strawberry.field(resolver=say_hello)
+
+
+schema = strawberry.Schema(query=Query)
