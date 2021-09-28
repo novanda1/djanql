@@ -2,11 +2,7 @@ import { PostList } from '../components/Post/PostList';
 import withApollo from '../lib/withApollo';
 
 export function Index() {
-  return (
-    <div className="mt-7">
-      <PostList />
-    </div>
-  );
+  return <PostList />;
 }
 
 export default withApollo()(Index);

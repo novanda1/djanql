@@ -13,7 +13,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <div className="relative max-w-2xl mx-auto">
           <Header />
           <main>
-            <Component {...pageProps} />
+            <div className="mt-7">
+              <Component {...pageProps} />
+            </div>
           </main>
         </div>
       </div>
