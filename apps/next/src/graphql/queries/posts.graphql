@@ -1,0 +1,13 @@
+query Posts {
+  posts {
+    id
+    host
+    title
+    podcast
+    content
+    excerpt
+    status
+    created
+    updated
+  }
+}
