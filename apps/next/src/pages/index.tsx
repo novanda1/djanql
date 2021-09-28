@@ -1,14 +1,8 @@
-import { gql, useQuery } from '@apollo/client';
+import { useHelloQuery } from '../generated/graphql';
 import withApollo from '../lib/withApollo';
 
 export function Index() {
-  const hello = gql`
-    {
-      hello
-    }
-  `;
-
-  const { data } = useQuery(hello);
+  const { data } = useHelloQuery();
   return <div>{data?.hello}</div>;
 }
 
