@@ -46,7 +46,10 @@ export const PostDetail: React.FC = () => {
             scrolling="no"
             src={data?.post.podcast}
           ></iframe>
-          <div className="mt-4 prose">{data?.post.content}</div>
+          <div
+            className="mt-4 prose"
+            dangerouslySetInnerHTML={{ __html: data?.post.content }}
+          ></div>
         </div>
       </div>
     </div>
