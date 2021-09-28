@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Post } from '../../generated/graphql';
 
 interface ISinglePostList {
@@ -5,10 +6,12 @@ interface ISinglePostList {
 }
 
 export const SinglePostList: React.FC<ISinglePostList> = ({ data }) => {
+  const date = moment(data.created).format("MMMM d[,] YYYY")
+
   return (
     <div className="relative">
       <p className="text-sm leading-5 text-gray-500">
-        <time dateTime="2021-1-28">{data.created}</time>
+        <time dateTime="2021-1-28">{date}</time>
       </p>
       <div>
         <h2 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
