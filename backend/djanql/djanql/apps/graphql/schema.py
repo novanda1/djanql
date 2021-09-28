@@ -12,6 +12,7 @@ class Book:
 
 @strawberry.type
 class Post:
+    id: int
     host: str
     title: str
     podcast: str

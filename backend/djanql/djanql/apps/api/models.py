@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from tinymce.models import HTMLField
 
 
 class host(models.Model):
@@ -28,7 +29,7 @@ class post(models.Model):
         host, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=200)
     podcast = models.CharField(max_length=200, null=True, blank=True)
-    content = models.TextField()
+    content = HTMLField()
     excerpt = models.TextField(default="excerpt")
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
     created = models.DateTimeField(auto_now_add=True)
