@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.4.15",
+    "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.6",
     "core-js": "^3.6.5",
     "graphql": "^15.6.0",
