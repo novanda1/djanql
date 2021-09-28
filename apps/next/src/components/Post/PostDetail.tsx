@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { useRouter } from 'next/router';
 import { usePostQuery } from '../../generated/graphql';
+import Link from 'next/link';
 
 export const PostDetail: React.FC = () => {
   const { query } = useRouter();
@@ -31,9 +32,11 @@ export const PostDetail: React.FC = () => {
         </p>
         <div>
           <h2 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
-            <a href={`/${data?.post.id}`}>
-              {data?.post.id}: {data?.post.host} - {data?.post.title}
-            </a>
+            <Link href={`/${data?.post.id}`}>
+              <a>
+                {data?.post.id}: {data?.post.host} - {data?.post.title}
+              </a>
+            </Link>
           </h2>
           <p className="mt-3 text-base leading-6 text-gray-600">
             {data?.post.excerpt}

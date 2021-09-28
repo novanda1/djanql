@@ -1,12 +1,13 @@
 import moment from 'moment';
 import { Post } from '../../generated/graphql';
+import Link from 'next/link';
 
 interface ISinglePostList {
   data: Post;
 }
 
 export const SinglePostList: React.FC<ISinglePostList> = ({ data }) => {
-  const date = moment(data.created).format("MMMM d[,] YYYY")
+  const date = moment(data.created).format('MMMM d[,] YYYY');
 
   return (
     <div className="relative">
@@ -20,15 +21,14 @@ export const SinglePostList: React.FC<ISinglePostList> = ({ data }) => {
         <p className="mt-3 text-base leading-6 text-gray-500">{data.excerpt}</p>
       </div>
       <div className="mt-3">
-        <a
-          className="text-base leading-6 font-semibold text-teal-600 hover:text-teal-700 focus:outline-none focus:underline"
-          href={`/${data.id}`}
-        >
-          <span className="sr-only">
-            {data.id}: {data.host} - {data.title}
-          </span>
-          Show notes<span className="absolute inset-0"></span>
-        </a>
+        <Link href={`/${data.id}`}>
+          <a className="text-base leading-6 font-semibold text-teal-600 hover:text-teal-700 focus:outline-none focus:underline">
+            <span className="sr-only">
+              {data.id}: {data.host} - {data.title}
+            </span>
+            Show notes<span className="absolute inset-0"></span>
+          </a>
+        </Link>
       </div>
     </div>
   );

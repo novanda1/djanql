@@ -1,21 +1,26 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const Header: React.FC = () => {
   return (
     <div className="flex flex-col items-center space-y-8 sm:items-start sm:space-y-0 sm:flex-row sm:space-x-8">
-      <a className="flex-shrink-0" href="/">
-        <span className="sr-only">Home</span>
-        <div className="relative overflow-hidden h-28 w-28 sm:h-36 sm:w-36 rounded-lg object-cover">
-          <Image
-            src="https://fullstackradio.com/podcast-cover.jpg"
-            layout="fill"
-            alt=""
-          />
-        </div>
-      </a>
+      <Link href="/">
+        <a className="flex-shrink-0">
+          <span className="sr-only">Home</span>
+          <div className="relative overflow-hidden h-28 w-28 sm:h-36 sm:w-36 rounded-lg object-cover">
+            <Image
+              src="https://fullstackradio.com/podcast-cover.jpg"
+              layout="fill"
+              alt=""
+            />
+          </div>
+        </a>
+      </Link>
       <div className="text-center sm:text-left">
         <h1 className="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
-          <a href="/">Full Stack Radio</a>
+          <Link href="/">
+            <a href="/">Full Stack Radio</a>
+          </Link>
         </h1>
         <div className="mt-2">
           <p className="text-xl leading-7 text-gray-500">
