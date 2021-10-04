@@ -1,3 +1,4 @@
+import typing
 import strawberry
 
 
@@ -12,3 +13,10 @@ class Post:
     status: int
     created: str
     updated: str
+
+
+@strawberry.type
+class PostWCursor:
+    result: typing.List[Post]
+    has_next: bool
+    next_cursor: str

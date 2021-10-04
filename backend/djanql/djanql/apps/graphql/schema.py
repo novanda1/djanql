@@ -2,7 +2,7 @@ import typing
 import strawberry
 
 from djanql.apps.api.models import post, host
-from djanql.apps.graphql.post.post_schema import Post
+from djanql.apps.graphql.post.post_schema import Post, PostWCursor
 from djanql.apps.graphql.post.post_resolver import get_posts, get_post
 
 
@@ -13,7 +13,7 @@ def say_hello():
 @strawberry.type
 class Query:
     hello: str = strawberry.field(resolver=say_hello)
-    posts: typing.List[Post] = strawberry.field(resolver=get_posts)
+    posts: PostWCursor = strawberry.field(resolver=get_posts)
     post: Post = strawberry.field(resolver=get_post)
 
 
