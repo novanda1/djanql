@@ -8,6 +8,7 @@ django-ckeditor==6.0.0
 django-classy-tags==2.0.0
 django-cms==3.8.0
 django-cors-headers==3.8.0
+django-cursor-pagination==0.1.5
 django-filer==2.0.2
 django-formtools==2.3
 django-js-asset==1.2.2
@@ -35,6 +36,7 @@ h11==0.12.0
 html5lib==1.1
 importlib-metadata==4.8.1
 Pillow==8.3.1
+psycopg2-binary==2.9.1
 Pygments==2.10.0
 python-dateutil==2.8.2
 python-dotenv==0.19.0
