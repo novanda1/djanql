@@ -6,8 +6,6 @@ import {
   PostQueryVariables,
   PostsDocument,
   PostsQuery,
-  usePostQuery,
-  usePostsQuery,
 } from '../../generated/graphql';
 import { initializeApollo } from '../../lib/apolloClient';
 import withApollo from '../../lib/withApollo';
@@ -37,7 +35,7 @@ export const getStaticProps: GetStaticProps = async ({ params = {} }) => {
     revalidate: 60,
   };
 };
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await client.query<PostsQuery>({
     query: PostsDocument,
     variables: { postsLimit: 3 },
