@@ -16,7 +16,7 @@ export const SinglePostList: React.FC<ISinglePostList> = ({ data }) => {
       </p>
       <div>
         <h2 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
-          {data.id}: {data.host} - {data.title}
+          {data.id}: {data.host && data.host + ' -'} {data.title}
         </h2>
         <p className="mt-3 text-base leading-6 text-gray-500">{data.excerpt}</p>
       </div>
