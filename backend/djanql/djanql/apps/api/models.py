@@ -5,7 +5,7 @@ from tinymce.models import HTMLField
 
 class host(models.Model):
     name = models.CharField(max_length=100)
-    age = models.IntegerField(null=True, blank=True, default=0)
+    age = models.IntegerField(null=True, blank=True, default=None)
 
     class Meta:
         verbose_name = _("host")
