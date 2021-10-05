@@ -1,15 +1,16 @@
 import typing
+from typing import Optional
 import strawberry
 
 
 @strawberry.type
 class Post:
     id: int
-    host: str
+    host: Optional[str]
     title: str
-    podcast: str
-    content: str
-    excerpt: str
+    podcast: Optional[str]
+    content: Optional[str]
+    excerpt: Optional[str]
     status: int
     created: str
     updated: str
