@@ -7,11 +7,10 @@ from djanql.apps.graphql.post.post_schema import Post
 from cursor_pagination import CursorPaginator
 
 
-def get_posts(after: typing.Optional[str] = None):
+def get_posts(limit: int, after: typing.Optional[str] = None):
     qs = PostModel.objects.all()
-    page_size = 1
-    paginator = CursorPaginator(qs, ordering=('created', 'id'))
-    page = paginator.page(first=page_size, after=after)
+    paginator = CursorPaginator(qs, ordering=('-created', '-id'))
+    page = paginator.page(first=limit, after=after)
 
     class Data:
         def __init__(self, result, has_next, next_cursor):
