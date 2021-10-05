@@ -1,13 +1,5 @@
 query Post($id: ID!) {
   post(id: $id) {
-    id
-    host
-    title
-    podcast
-    content
-    excerpt
-    status
-    created
-    updated
+    ...PostFragment
   }
 }

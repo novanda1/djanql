@@ -16,28 +16,43 @@ export type Scalars = {
 
 export type Post = {
   __typename?: 'Post';
-  content: Scalars['String'];
+  content?: Maybe<Scalars['String']>;
   created: Scalars['String'];
-  excerpt: Scalars['String'];
-  host: Scalars['String'];
+  excerpt?: Maybe<Scalars['String']>;
+  host?: Maybe<Scalars['String']>;
   id: Scalars['Int'];
-  podcast: Scalars['String'];
+  podcast?: Maybe<Scalars['String']>;
   status: Scalars['Int'];
   title: Scalars['String'];
   updated: Scalars['String'];
+};
+
+export type PostWCursor = {
+  __typename?: 'PostWCursor';
+  hasNext: Scalars['Boolean'];
+  nextCursor: Scalars['String'];
+  result: Array<Post>;
 };
 
 export type Query = {
   __typename?: 'Query';
   hello: Scalars['String'];
   post: Post;
-  posts: Array<Post>;
+  posts: PostWCursor;
 };
 
 
 export type QueryPostArgs = {
   id: Scalars['ID'];
 };
+
+
+export type QueryPostsArgs = {
+  after?: Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+};
+
+export type PostFragmentFragment = { __typename?: 'Post', id: number, host?: Maybe<string>, title: string, podcast?: Maybe<string>, content?: Maybe<string>, excerpt?: Maybe<string>, status: number, created: string, updated: string };
 
 export type HelloQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -49,14 +64,29 @@ export type PostQueryVariables = Exact<{
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: number, host: string, title: string, podcast: string, content: string, excerpt: string, status: number, created: string, updated: string } };
+export type PostQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: number, host?: Maybe<string>, title: string, podcast?: Maybe<string>, content?: Maybe<string>, excerpt?: Maybe<string>, status: number, created: string, updated: string } };
 
-export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
+export type PostsQueryVariables = Exact<{
+  postsLimit: Scalars['Int'];
+  after?: Maybe<Scalars['String']>;
+}>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, host: string, title: string, podcast: string, content: string, excerpt: string, status: number, created: string, updated: string }> };
+export type PostsQuery = { __typename?: 'Query', posts: { __typename?: 'PostWCursor', hasNext: boolean, nextCursor: string, result: Array<{ __typename?: 'Post', id: number, host?: Maybe<string>, title: string, podcast?: Maybe<string>, content?: Maybe<string>, excerpt?: Maybe<string>, status: number, created: string, updated: string }> } };
 
-
+export const PostFragmentFragmentDoc = gql`
+    fragment PostFragment on Post {
+  id
+  host
+  title
+  podcast
+  content
+  excerpt
+  status
+  created
+  updated
+}
+    `;
 export const HelloDocument = gql`
     query Hello {
   hello
@@ -92,18 +122,10 @@ export type HelloQueryResult = Apollo.QueryResult<HelloQuery, HelloQueryVariable
 export const PostDocument = gql`
     query Post($id: ID!) {
   post(id: $id) {
-    id
-    host
-    title
-    podcast
-    content
-    excerpt
-    status
-    created
-    updated
+    ...PostFragment
   }
 }
-    `;
+    ${PostFragmentFragmentDoc}`;
 
 /**
  * __usePostQuery__
@@ -133,20 +155,16 @@ export type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
 export type PostQueryResult = Apollo.QueryResult<PostQuery, PostQueryVariables>;
 export const PostsDocument = gql`
-    query Posts {
-  posts {
-    id
-    host
-    title
-    podcast
-    content
-    excerpt
-    status
-    created
-    updated
+    query Posts($postsLimit: Int!, $after: String) {
+  posts(limit: $postsLimit, after: $after) {
+    result {
+      ...PostFragment
+    }
+    hasNext
+    nextCursor
   }
 }
-    `;
+    ${PostFragmentFragmentDoc}`;
 
 /**
  * __usePostsQuery__
@@ -160,10 +178,12 @@ export const PostsDocument = gql`
  * @example
  * const { data, loading, error } = usePostsQuery({
  *   variables: {
+ *      postsLimit: // value for 'postsLimit'
+ *      after: // value for 'after'
  *   },
  * });
  */
-export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
+export function usePostsQuery(baseOptions: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
       }
