@@ -21,7 +21,7 @@ export const SinglePostList: React.FC<ISinglePostList> = ({ data }) => {
         <p className="mt-3 text-base leading-6 text-gray-500">{data.excerpt}</p>
       </div>
       <div className="mt-3">
-        <Link href={`/${data.id}`}>
+        <Link href={`/post/${data.id}`}>
           <a className="text-base leading-6 font-semibold text-teal-600 hover:text-teal-700 focus:outline-none focus:underline">
             <span className="sr-only">
               {data.id}: {data.host} - {data.title}
