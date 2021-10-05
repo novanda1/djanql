@@ -72,7 +72,7 @@ export type PostsQueryVariables = Exact<{
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: { __typename?: 'PostWCursor', hasNext: boolean, nextCursor: string, result: Array<{ __typename?: 'Post', id: number, host?: Maybe<string>, title: string, podcast?: Maybe<string>, content?: Maybe<string>, excerpt?: Maybe<string>, status: number, created: string, updated: string }> } };
+export type PostsQuery = { __typename?: 'Query', posts: { __typename?: 'PostWCursor', hasNext: boolean, nextCursor: string, result: Array<{ __typename?: 'Post', id: number, host?: Maybe<string>, title: string, excerpt?: Maybe<string>, created: string }> } };
 
 export const PostFragmentFragmentDoc = gql`
     fragment PostFragment on Post {
@@ -158,13 +158,17 @@ export const PostsDocument = gql`
     query Posts($postsLimit: Int!, $after: String) {
   posts(limit: $postsLimit, after: $after) {
     result {
-      ...PostFragment
+      id
+      host
+      title
+      excerpt
+      created
     }
     hasNext
     nextCursor
   }
 }
-    ${PostFragmentFragmentDoc}`;
+    `;
 
 /**
  * __usePostsQuery__

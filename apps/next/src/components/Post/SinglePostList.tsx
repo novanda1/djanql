@@ -3,7 +3,7 @@ import { Post } from '../../generated/graphql';
 import Link from 'next/link';
 
 interface ISinglePostList {
-  data: Post;
+  data: Partial<Post>;
 }
 
 export const SinglePostList: React.FC<ISinglePostList> = ({ data }) => {

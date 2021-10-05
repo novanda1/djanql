@@ -1,7 +1,11 @@
 query Posts($postsLimit: Int!, $after: String) {
   posts(limit: $postsLimit, after: $after) {
     result {
-      ...PostFragment
+      id
+      host
+      title
+      excerpt
+      created
     }
     hasNext
     nextCursor
