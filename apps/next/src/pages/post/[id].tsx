@@ -7,8 +7,8 @@ import {
   PostsDocument,
   PostsQuery,
 } from '@djanql-spaces/apollo-graphql';
-import { initializeApollo } from '../../lib/apolloClient';
-import withApollo from '../../lib/withApollo';
+import { initializeApollo } from '@djanql-spaces/apollo-utils';
+import withApollo from '@djanql-spaces/apollo-utils';
 
 const PostDetailPage = ({ post }) => {
   return <PostDetail data={post} />;

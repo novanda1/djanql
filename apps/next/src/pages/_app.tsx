@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import 'tailwindcss/tailwind.css';
 import { Header } from '../components/Header';
-import { useApollo } from '../lib/apolloClient';
+import { useApollo } from '@djanql-spaces/apollo-utils';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps);

@@ -1,5 +1,5 @@
 import { PostList } from '../components/Post/PostList';
-import withApollo from '../lib/withApollo';
+import withApollo from '@djanql-spaces/apollo-utils';
 import Head from 'next/head';
 
 export function Index() {

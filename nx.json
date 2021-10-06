@@ -27,6 +27,12 @@
     ]
   },
   "projects": {
+    "apollo-graphql": {
+      "tags": []
+    },
+    "apollo-utils": {
+      "tags": []
+    },
     "next": {
       "tags": []
     },

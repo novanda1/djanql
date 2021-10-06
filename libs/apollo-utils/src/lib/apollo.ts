@@ -3,7 +3,7 @@ import {
   ApolloLink,
   HttpLink,
   InMemoryCache,
-  NormalizedCacheObject
+  NormalizedCacheObject,
 } from '@apollo/client';
 import merge from 'deepmerge';
 import { IncomingHttpHeaders } from 'http';
