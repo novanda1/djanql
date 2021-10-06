@@ -1,8 +1,8 @@
 overwrite: true
 schema: "http://localhost:9090/graphql/"
-documents: "apps/next/src/**/*.graphql"
+documents: "libs/apollo-graphql/src/**/*.graphql"
 generates:
-  apps/next/src/generated/graphql.ts:
+  libs/apollo-graphql/src/generated/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"

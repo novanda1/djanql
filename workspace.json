@@ -1,6 +1,50 @@
 {
   "version": 2,
   "projects": {
+    "apollo-graphql": {
+      "root": "libs/apollo-graphql",
+      "sourceRoot": "libs/apollo-graphql/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/apollo-graphql/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/apollo-graphql"],
+          "options": {
+            "jestConfig": "libs/apollo-graphql/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "apollo-utils": {
+      "root": "libs/apollo-utils",
+      "sourceRoot": "libs/apollo-utils/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/apollo-utils/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/apollo-utils"],
+          "options": {
+            "jestConfig": "libs/apollo-utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "next": {
       "root": "apps/next",
       "sourceRoot": "apps/next",

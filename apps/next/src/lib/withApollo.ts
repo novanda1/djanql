@@ -1,6 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { withApollo } from 'next-apollo';
-import { PostWCursor } from '../generated/graphql';
+import { PostWCursor } from '@djanql-spaces/apollo-graphql';
 
 const apolloClient = new ApolloClient({
   ssrMode: typeof window === 'undefined',

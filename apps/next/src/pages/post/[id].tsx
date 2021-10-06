@@ -6,7 +6,7 @@ import {
   PostQueryVariables,
   PostsDocument,
   PostsQuery,
-} from '../../generated/graphql';
+} from '@djanql-spaces/apollo-graphql';
 import { initializeApollo } from '../../lib/apolloClient';
 import withApollo from '../../lib/withApollo';
 

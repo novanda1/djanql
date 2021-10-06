@@ -1,7 +1,7 @@
 import moment from 'moment';
 import Head from 'next/head';
 import Link from 'next/link';
-import { PostQuery } from '../../generated/graphql';
+import { PostQuery } from '@djanql-spaces/apollo-graphql';
 
 export const PostDetail: React.FC<{ data: PostQuery }> = ({ data }) => {
   return (

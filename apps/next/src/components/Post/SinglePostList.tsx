@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Post } from '../../generated/graphql';
+import { Post } from '@djanql-spaces/apollo-graphql';
 import Link from 'next/link';
 
 interface ISinglePostList {

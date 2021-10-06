@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePostsQuery } from '../../generated/graphql';
+import { usePostsQuery } from '@djanql-spaces/apollo-graphql';
 import { SinglePostList } from './SinglePostList';
 
 export const PostList: React.FC = () => {

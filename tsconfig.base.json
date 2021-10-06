@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@djanql-spaces/apollo-graphql": ["libs/apollo-graphql/src/index.ts"],
+      "@djanql-spaces/apollo-utils": ["libs/apollo-utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
